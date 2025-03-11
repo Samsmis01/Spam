@@ -16,56 +16,23 @@ Envoi de messages WhatsApp en utilisant l'API de Twilio.
 
 Changement d'adresse IP en utilisant le réseau Tor pour anonymiser les requêtes.
 
-
-🛠️ Installation
-
-Pré-requis
-
-Termux installé sur votre appareil Android.
-
-Connexion Internet active.
+🎁 veillez d'abord installer thor 
+dpkg --configure -a
+apt-get install -f
+pkg install tor
 
 
-Étapes d'installation
+🛠️ Installation du dépôt 
 
-1. Cloner le dépôt :
-
+pip uninstall urllib3 requests -y
+pip install urllib3 requests
+pip install stem
+pkg update -y
+pkg install python -y
+pip install requests smtplib email stem twilio
 git clone https://github.com/Samsmis01/Spam.git
-
-
-
-
-
-2. Accéder au répertoire du script :
-
 cd Spam
-
-
-
-
-
-3. Donner les permissions d'exécution au script :
-
-chmod +x hextech_spam.py
-
-
-
-
-
-4. Installer les dépendances requises :
-
-pip install -r requirements.txt
-
-
-
-
-
-🚀 Utilisation
-
-1. Lancer le script :
-
-python hextech_spam.py
-
+python hextech.py
 
 
 
