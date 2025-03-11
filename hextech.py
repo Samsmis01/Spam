@@ -34,13 +34,13 @@ def installer_tor():
                 print("[✅] Tor installé avec succès !")
             except subprocess.CalledProcessError as e:
                 print(f"[❌] Échec de l'installation de Tor : {e}")
-                print("[❗] L'installation automatique a échoué.")
-                print("[❗] Veuillez installer Tor manuellement.")
-                print("[❗] Pour installer Tor, exécutez la commande suivante dans votre terminal :")
+                print("[❗bro] L'installation automatique a échoué.")
+                print("[❗bro] Veuillez installer Tor manuellement.")
+                print("[❗ HEXTECH dit] Pour installer Tor, exécutez la commande suivante dans votre terminal :")
                 print("    pkg install tor")
-                print("[❗] Une fois l'installation terminée, activez Tor avec la commande suivante :")
+                print("[❗bro] Une fois l'installation terminée, activez Tor avec la commande suivante :")
                 print("    tor &")
-                print("[❗] Une fois Tor activé, relancez le programme.")
+                print("[❗ hextech dit] Une fois Tor activé, relancez le programme.")
         else:
             print("[✅] Tor est déjà installé.")
     except Exception as e:
@@ -170,7 +170,7 @@ def menu_principal():
     tor_process = start_tor()
 
     while True:
-        print("\n[1] SMS Anonyme\n[2] Email\n[3] WhatsApp\n[4] Quitter")
+        print("\n[1]🧧 SMS Anonyme\n[2]🔶 Email\n[3]♻️ WhatsApp\n[4] Quitter")
         choix = input("Choisissez une option : ")
 
         if choix == "1":
