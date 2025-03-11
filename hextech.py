@@ -38,11 +38,11 @@ def start_tor():
     """Démarre Tor en arrière-plan"""
     try:
         if not os.path.exists("/data/data/com.termux/files/usr/bin/tor"):
-            print("[❌] Tor n'est pas installé !")
+            print("[❌] Tor n'est pas installé ,veillez l'installer !")
             return None
         tor_process = subprocess.Popen(['tor'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         print("[🔄] Tor démarre...")
-        time.sleep(10)
+        time.sleep(40)
         return tor_process
     except Exception as e:
         print(f"[❌] Erreur lors du démarrage de Tor : {e}")
@@ -139,7 +139,7 @@ def afficher_informations():
     print("\033[1;32m")
     print("╔═══════════════════════════════════════╗")
     print("║                                                                            ║")
-    print("║  DÉVELOPPEUR : \033[1;36mHEXTECH \033[1;32m                                                ║")
+    print("║  DÉVELOPPEUR : \033[1;36m亗𝐇𝐄𝐗𒋲𝐓𝐄𝐂𝐇亗 \033[1;32m                                                ║")
     print("║  CANAL TÉLÉGRAM : \033[1;36mhttps://t.me/hextechcar \033[1;32m                             ║")
     print("║  INSTAGRAM : \033[1;36mSAMSMS01 \033[1;32m                                                ║")
     print("║  GITHUB : \033[1;36mSamsmis01 \033[1;32m                                                   ║")
@@ -158,12 +158,12 @@ def menu_principal():
         choix = input("Choisissez une option : ")
 
         if choix == "1":
-            numero = input("Numéro (Format: +XX...): ").strip()
+            numero = input("Numéro (Format: +243...): ").strip()
             if valider_numero(numero):
                 message = input("Message : ").strip()
                 envoyer_sms_anonyme(numero, message)
             else:
-                print("[❌] Numéro invalide.")
+                print("[❌] Numéro invalide bro.")
 
         elif choix == "2":
             to_email = input("Email du destinataire : ").strip()
@@ -172,7 +172,7 @@ def menu_principal():
             envoyer_email_gmail(to_email, subject, body)
 
         elif choix == "3":
-            numero = input("Numéro WhatsApp (Format: +XX...): ").strip()
+            numero = input("Numéro WhatsApp (Format: +243...): ").strip()
             if valider_numero(numero):
                 message = input("Message : ").strip()
                 sid = input("Twilio SID : ").strip()
@@ -183,7 +183,7 @@ def menu_principal():
                 print("[❌] Numéro invalide.")
 
         elif choix == "4":
-            print("[👋] Au revoir !")
+            print("[👋] Au revoir bro 😭!")
             if tor_process:
                 tor_process.terminate()
             break
