@@ -24,16 +24,33 @@ SEND_REPORT_EVERY = 60  # Envoi du rapport toutes les 60 secondes
 def installer_tor():
     """Vérifie si Tor est installé et l'installe si nécessaire"""
     try:
+        # Vérifier si Tor est déjà installé
         if subprocess.run(["which", "tor"], capture_output=True).returncode != 0:
             print("[🛠] Tor n'est pas installé. Installation en cours...")
-            subprocess.run(["pkg", "install", "tor", "-y"], check=True)
-            print("[✅] Tor installé avec succès !")
+            
+            # Tentative d'installation de Tor de manière forcée
+            try:
+                subprocess.run(["pkg", "install", "tor", "-y"], check=True)
+                print("[✅] Tor installé avec succès !")
+            except subprocess.CalledProcessError as e:
+                print(f"[❌] Échec de l'installation de Tor : {e}")
+                print("[❗] L'installation automatique a échoué.")
+                print("[❗] Veuillez installer Tor manuellement.")
+                print("[❗] Pour installer Tor, exécutez la commande suivante dans votre terminal :")
+                print("    pkg install tor")
+                print("[❗] Une fois l'installation terminée, activez Tor avec la commande suivante :")
+                print("    tor &")
+                print("[❗] Une fois Tor activé, relancez le programme.")
         else:
             print("[✅] Tor est déjà installé.")
     except Exception as e:
         print(f"[❌] Erreur d'installation de Tor : {e}")
-
-
+        print("[❗bro] Veuillez installer Tor manuellement.")
+        print("[❗ hextech dit] Pour installer Tor, exécutez la commande suivante dans votre terminal :")
+        print("    pkg install tor")
+        print("[❗bro] Une fois l'installation terminée, activez Tor avec la commande suivante :")
+        print("    tor &")
+        print("[❗bro ] Une fois Tor activé, relancez le programme.")
 def start_tor():
     """Démarre Tor en arrière-plan"""
     try:
@@ -77,15 +94,14 @@ def envoyer_sms_anonyme(numero, message):
     url = "https://textbelt.com/text"
     params = {'phone': numero, 'message': message, 'key': 'textbelt'}
     try:
-        response = requests.post(url, data=params)
-        if response.status_code == 200:
-            print("[✅] SMS envoyé avec succès !")
-        else:
-            print(f"[❌] Échec de l'envoi du SMS: {response.text}")
+        for _ in range(1000):  # Envoi du message 2 fois
+            response = requests.post(url, data=params)
+            if response.status_code == 200:
+                print("[✅] SMS envoyé avec succès !")
+            else:
+                print(f"[❌] Échec de l'envoi du SMS: {response.text}")
     except Exception as e:
         print(f"[❌] Erreur d'envoi SMS : {e}")
-
-
 def envoyer_email_gmail(to_email, subject, body):
     """Envoie un email via Gmail"""
     changer_ip()
