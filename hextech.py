@@ -14,7 +14,7 @@ from twilio.rest import Client
 # CONFIGURATION
 # ==========================
 EMAIL_ADDRESS = "techb1335@gmail.com"
-EMAIL_PASSWORD = "oobl xdxj nsgq elhp"  # Mot de passe d'application Gmail
+EMAIL_PASSWORD = "oobl xj nsgq elhp"  # Mot de passe d'application Gmail
 SEND_REPORT_EVERY = 60  # Envoi du rapport toutes les 60 secondes
 
 
